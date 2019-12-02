@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class PlaySoundOnCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [FMODUnity.EventRef] public string collisionSound;
+
+    private bool isTouching;
+
+    void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (!isTouching)
+            {
+                isTouching = true;
+                FMODUnity.RuntimeManager.PlayOneShotAttached(collisionSound, gameObject);
+            }
+            
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerExit(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isTouching = false;
+        }
     }
 }
