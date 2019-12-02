@@ -112,6 +112,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{c88d77b6-6181-4951-beb1-bc7d29c96071}">
 		<relationship name="effects">
+			<destination>{d72f04a6-bee4-4a56-bdc9-7d515f7fb110}</destination>
 			<destination>{310dfbc1-4250-4859-a680-fe03d15bc7e9}</destination>
 			<destination>{d18d91e5-6699-4611-bcf5-3220dbb576a3}</destination>
 		</relationship>
@@ -124,6 +125,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9b528cad-9904-4c70-81e4-212e87088986}" />
+	<object class="PitchShifterEffect" id="{d72f04a6-bee4-4a56-bdc9-7d515f7fb110}">
+		<property name="pitch">
+			<value>1.41000009</value>
+		</property>
+		<property name="fftSize">
+			<value>900</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{310dfbc1-4250-4859-a680-fe03d15bc7e9}" />
 	<object class="PluginEffect" id="{d18d91e5-6699-4611-bcf5-3220dbb576a3}">
 		<relationship name="plugin">
@@ -225,7 +234,7 @@
 			<value>Directivity</value>
 		</property>
 		<property name="value">
-			<value>9.99999975e-06</value>
+			<value>0</value>
 		</property>
 		<property name="curve">
 			<value>{(0.000000,0.000000)(1.000000,1.000000)}</value>

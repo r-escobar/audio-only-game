@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{5eb9b726-9e10-4277-b46e-e256ba2fece1}">
+		<property name="assetPath">
+			<value>catPurring.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>11.582270833333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{14241c9d-c2f9-42eb-b1ee-c171cb24f82e}</destination>
+		</relationship>
+	</object>
+</objects>
