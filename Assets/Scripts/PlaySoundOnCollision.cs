@@ -5,28 +5,30 @@ using UnityEngine;
 public class PlaySoundOnCollision : MonoBehaviour
 {
 
-    [FMODUnity.EventRef] public string collisionSound;
+//    void OnControllerColliderHit(ControllerColliderHit hit)
+//    {
+//        SoundHolder soundHolder = hit.gameObject.GetComponent<SoundHolder>();
+//        if (soundHolder != null)
+//        {
+//            soundHolder.PlaySoundAtPosition(hit.point);
+//        }
+//    }
 
-    private bool isTouching;
-
-    void OnTriggerEnter(Collider other)
+//    private void OnTriggerEnter(Collider other)
+//    {
+//        SoundHolder soundHolder = other.gameObject.GetComponent<SoundHolder>();
+//        if (soundHolder != null)
+//        {
+//            soundHolder.PlaySoundAtPosition(other.ClosestPointOnBounds(transform.position));
+//        }
+//    }
+    
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        SoundHolder soundHolder = collision.collider.gameObject.GetComponent<SoundHolder>();
+        if (soundHolder != null)
         {
-            if (!isTouching)
-            {
-                isTouching = true;
-                FMODUnity.RuntimeManager.PlayOneShotAttached(collisionSound, gameObject);
-            }
-            
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            isTouching = false;
+            soundHolder.PlaySoundAtPosition(collision.contacts[0].point);
         }
     }
 }
