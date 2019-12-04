@@ -13,6 +13,8 @@ public class PetPickup : MonoBehaviour
 
     private Collider col;
     
+    [FMODUnity.EventRef] public string pickupSound;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,8 @@ public class PetPickup : MonoBehaviour
                 transform.localRotation = Quaternion.identity;
                 transform.localPosition = heldPosition;
                 col.enabled = false;
+                
+                //FMODUnity.RuntimeManager.PlayOneShotAttached(pickupSound, gameObject);
             }
         }
     }
