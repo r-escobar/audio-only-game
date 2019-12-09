@@ -25,6 +25,7 @@ public class PlaySoundOnCollision : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
+        //Debug.Log("player collision enter");
         SoundHolder soundHolder = collision.collider.gameObject.GetComponent<SoundHolder>();
         if (soundHolder != null)
         {

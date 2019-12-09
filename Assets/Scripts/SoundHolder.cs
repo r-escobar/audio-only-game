@@ -8,6 +8,7 @@ public class SoundHolder : MonoBehaviour
 
     public void PlaySoundAtPosition(Vector3 pos)
     {
+        //Debug.Log(pos);
         FMODUnity.RuntimeManager.PlayOneShot(sound, pos);
     }
 }
