@@ -7,6 +7,7 @@ public class PetPickup : MonoBehaviour
     public Vector3 heldPosition;
 
     private bool isHeld;
+    private bool wasJustDropped;
 
     private int numBumps;
     public int bumpsToDrop = 6;
@@ -31,7 +32,7 @@ public class PetPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!isHeld)
+            if (!isHeld && !wasJustDropped)
             {
                 isHeld = true;
                 transform.parent = other.transform.GetChild(0);
@@ -39,8 +40,27 @@ public class PetPickup : MonoBehaviour
                 transform.localPosition = heldPosition;
                 col.enabled = false;
                 
-                //FMODUnity.RuntimeManager.PlayOneShotAttached(pickupSound, gameObject);
+                other.GetComponent<PetHolder>().heldPets.Add(gameObject);
             }
         }
+    }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (wasJustDropped)
+            {
+                isHeld = false;
+                wasJustDropped = false;
+            }
+        }
+    }
+
+    public void Drop()
+    {
+        Debug.Log("dropped");
+        wasJustDropped = true;
+        col.enabled = true;
     }
 }
